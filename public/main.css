@@ -1,0 +1,915 @@
+:root {
+    font-family: Ubuntu;
+    font-size: 14px;
+}
+
+.conceal {
+    -webkit-text-security: disc;
+}
+
+#mainBody {
+    background-color: #dbdbdb;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 0;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 3px;
+    background: oklch(0% 0 0 / 15%);
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background: oklch(0% 0 0 / 30%);
+}
+
+html,
+body {
+    overflow: hidden;
+    height: 100%;
+    position: fixed;
+    -webkit-overflow-scrolling: touch;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+body {
+    font-family: Ubuntu;
+    font-size: 14px;
+    background-image: url('./backgroundTile.png');
+    background-repeat: repeat;
+    background-color: gray;
+}
+
+html,
+body,
+canvas {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+canvas {
+    image-rendering: optimizeSpeed;
+    image-rendering: pixelated;
+}
+
+#gameName {
+    padding: 0;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: xx-large;
+    font-weight: bolder;
+}
+
+h2 {
+    font-size: small;
+    color: #000000;
+    font-weight: bold;
+    text-align: center;
+}
+
+options_header {
+    display: block;
+    margin: 5px 0 4px;
+    font: bold 13px/1 Ubuntu;
+    color: #000000;
+    text-align: center;
+}
+
+h3 {
+    font-size: 14px;
+    color: #484848;
+    text-align: center;
+    padding: 0;
+    margin: 4px 0;
+}
+
+h4 {
+    font-size: small;
+    color: #1B3353;
+    /*color: #8ABC3F;*/
+    text-align: center;
+}
+
+h5 {
+    font-size: x-small;
+    color: #484848;
+    text-align: center;
+}
+small {
+    font-size: x-small;
+}
+
+a:link,
+a:visited {
+    color: #484848;
+}
+
+a:hover {
+    color: #B5B5B9;
+}
+
+ul {
+    padding-left: 15px;
+    margin-left: 10px;
+}
+
+input {
+    text-align: center;
+    font-family: Ubuntu;
+    width: 100%;
+    padding: 10px;
+    border: solid 1px #dcdcdc;
+    transition: box-shadow 0.3s, border 0.3s;
+    box-sizing: border-box;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    outline: none;
+}
+
+input.checkbox {
+    width: 13px;
+    height: 13px;
+    padding: 0;
+    margin: 0;
+    vertical-align: bottom;
+    position: relative;
+    top: -2px;
+    overflow: hidden;
+}
+
+#optColors {
+    width: 220px;
+}
+#optMobile {
+    display: none;
+}
+body.mobile #optColors {
+    width: 346px;
+    margin-bottom: 4px;
+  }
+body.mobile #optMobile, body.mobile #optBorders {
+    width: 170px;
+    margin-bottom: 4px;
+    display: inline-block;
+}
+#playerNameInput {
+    padding: 10px;
+    font-size: large;
+}
+#playerKeyInput {
+    padding: 3px;
+    color: gray;
+}
+
+input:focus,
+input.focus {
+    border: solid 1px #CCCCCC;
+    box-shadow: 0 0 3px 1px #DDDDDD;
+}
+
+div {
+    -webkit-user-select: none;
+    /* webkit (safari, chrome) browsers */
+    -moz-user-select: none;
+    /* mozilla browsers */
+    -khtml-user-select: none;
+    /* webkit (konqueror) browsers */
+    -ms-user-select: none;
+    /* IE10+ */
+}
+div.optionsHeader {
+    display: block;
+    margin: 10px 0 4px;
+    font: bold 13px/1 Ubuntu;
+    color: #000000;
+    text-align: center;
+}
+.serverSelector {
+    height: 25px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 13px;
+    padding-left: 10px;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: oklch(0% 0 0 / 30%) oklch(0% 0 0 / 15%);
+}
+
+.serverSelector tr {
+    color: #828282;
+    cursor: pointer;
+}
+
+.serverSelector tr.selected {
+    color: #1B3353;
+    /*color: #8ABC3F;*/
+    cursor: default;
+}
+
+#startMenu {
+    position: relative;
+    margin: auto;
+    width: 1150px;
+    padding: 10px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    background-color: #DDE6EB;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+body.mobile #startMenu {
+    width: 770px;
+}
+#startMenuHeader {
+    text-align: left;
+    width: 100%;
+    height: 100%;
+}
+
+.startMenuHolder {
+    width: 350px;
+    height: 380px;
+    padding: 10px;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: text-top;
+}
+body.mobile .linkHolder { display: none; }
+.sliderHolder {
+    width: 350px;
+    height: 325px;
+    overflow: hidden;
+}
+
+tfoot {
+    text-align: center;
+    opacity: 0.5;
+    margin: 10px;
+}
+
+table {
+    width: 100%;
+}
+
+.slider {
+    position: relative;
+    top: 0px;
+    opacity: 1;
+    width: 100%;
+    transition: top 500ms, opacity 500ms;
+}
+.slided .slider {
+    top: -305px;
+}
+#startMenuSlidingContent {
+    height: 305px;
+}
+body.mobile .desktopControlTab {
+    display: none;
+}
+.mobileOptions {
+    display: none;
+}
+body.mobile .mobileOptions {
+    display: block;
+}
+.mobileOptionsHeader {
+    display: none;
+}
+body.mobile .mobileOptionsHeader {
+    display: block;
+    margin: 10px 0 4px;
+    font: bold 13px/1 Ubuntu;
+    color: #000000;
+    text-align: center;
+}
+#startMenuSlidingTrigger {
+    cursor: pointer;
+    height: 25px;
+}
+
+#startMenuSlidingTrigger:hover {
+    text-shadow: 0 1px 2px oklch(0% 0 0 / 25%);
+}
+
+update {
+    color: #D83848;
+    font-weight: bold;
+}
+
+.titleSpan {
+    padding-left: 10px;
+    font-size: x-large;
+    font-weight: bold;
+    text-align: center;
+}
+.horizontalSelector {
+    padding: 4px 0;
+    margin-bottom: 4px;
+    font: bold 12px Ubuntu;
+    text-align: center;
+    overflow: auto hidden;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+}
+.horizontalSelector span {
+    padding: 4px 10px;
+    color: #343434;
+    cursor: pointer;
+}
+.horizontalSelector span:hover {
+    color: #5f5f5f;
+}
+.horizontalSelector span.active {
+    background: #0074DA;
+    color: #ffffff;
+    border-radius: 5px;
+    cursor: default;
+}
+.shrinkable {
+    padding-left: 0px;
+    width: 360px;
+}
+
+#patchNotes {
+    max-width: 330px;
+    height: calc(100% - 50px);
+    padding: 5px 20px 10px;
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: oklch(0% 0 0 / 30%) oklch(0% 0 0 / 15%);
+}
+
+#patchNotes div {
+    > .title {
+        margin: 0;
+        font-size: 1.5em;
+        font-weight: bold;
+    }
+
+    > date {
+        color: oklch(0% 0 0 / 45%);
+        font-style: italic;
+    }
+
+    > ul li {
+        margin-left: 1em;
+        margin-bottom: .5em;
+    }
+
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: .1em;
+        background-color: gray;
+    }
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    font: 13px/1 Ubuntu;
+    padding: 2px 28px 2px 8px;
+    height: 21px;
+    margin-left: 3px;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAICAYAAAD0g6+qAAAAwklEQVQoU42QMQrCQBBFZxeGgJ7BI1jYa2GzTTY3sRUECy1yA0svEQhhEHIHLdRrqF2a5EuCkbgmmin/zLz5f5QxZsTMK2ZeR1F0p5ay1i7zPD+LiLT1S01Za7dEtCGiY5Zl8zRNH81h3/d3SqkFgFOSJJNOUBAEAwAHIpq6sAbkprWexXF86QSVjTaY53nhy8lfSBWtvuDAKhlAL8gHyHUGAFrr8a84zZhvR7VojBkyc1gUxV5Erl0/cfUvUN9Fd+4JA1JkCdbmVf8AAAAASUVORK5CYII=) 100% no-repeat #eee;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+select:hover {
+    background-color: #ccc;
+}
+select:active {
+    background-color: #eee;
+}
+.shadowScroll {
+    overflow-y: scroll;
+    background:
+        /* Shadow covers */
+        linear-gradient(#dde6eb 30%, rgba(255, 255, 255, 0)),
+        linear-gradient(rgba(255, 255, 255, 0), #dde6eb 70%) 0 100%,
+        /* Shadows */
+        radial-gradient(farthest-side at 50% 0, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)),
+        radial-gradient(farthest-side at 50% 100%, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)) 0 100%;
+    background-repeat: no-repeat;
+    background-color: #dde6eb;
+    background-size: 100% 40px, 100% 40px, 100% 14px, 100% 14px;
+    background-attachment: local, local, scroll, scroll;
+}
+
+#startButton {
+    font-family: Ubuntu;
+    position: relative;
+    margin: auto;
+    width: 100%;
+    height: 40px;
+    box-sizing: border-box;
+    font-size: larger;
+    color: white;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    background: #336699;
+    /*background: #A9D86D;*/
+    border: 0;
+    border-bottom: 2px solid #1B3353;
+    /*border-bottom: 2px solid #8ABC3F;*/
+    cursor: pointer;
+    -webkit-box-shadow: inset 0 -2px #1B3353;
+    /*-webkit-box-shadow: inset 0 -2px #8ABC3F;*/
+    box-shadow: inset 0 -2px #1B3353;
+    /*box-shadow: inset 0 -2px #8ABC3F;*/
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+#startButton:active,
+#startButton:hover {
+    top: 1px;
+    background: #1B3353;
+    /*background: #8ABC3F;*/
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+#bottomHolder {
+    width: 370px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+.greyText {
+    opacity: 0.5;
+}
+.container {
+    position: relative;
+    padding-left: 20px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.container input {
+    position: absolute;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+    cursor: pointer;
+}
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 14px;
+    width: 14px;
+    border-radius: 4px;
+    background-color: #eee;
+    border: 1px solid #ccc;
+}
+.radio {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 14px;
+    width: 14px;
+    border-radius: 50%;
+    background-color: #eee;
+    border: 1px solid #ccc;
+}
+
+.container:hover input ~ .checkmark, .container:hover input ~ .radio {
+    background-color: #ccc;
+}
+.container input:disabled ~ .checkmark, .container input:disabled ~ .radio {
+    background-color: #ddd;
+}
+.container input:checked ~ .checkmark, .container input:checked ~ .radio {
+    background-color: #0074DA;
+    border: 1px solid #0074DA;
+}
+.container:hover input:checked ~ .checkmark, .container:hover input:checked ~ .radio {
+    background-color: #004894;
+    border: 1px solid #004894;
+}
+.container input:disabled:checked ~ .checkmark, .container input:disabled:checked ~ .radio {
+    background-color: #002C5B;
+    border: 1px solid #002C5B;
+}
+.container .checkmark:after {
+    content: '';
+    position: absolute;
+    display: none;
+    left: 4px;
+    top: 1px;
+    width: 4px;
+    height: 8px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+.container .radio:after {
+    content: '';
+    display: none;
+    margin: 4px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #fff;
+}
+.container input:checked ~ .checkmark:after, .container input:checked ~ .radio:after {
+    display: block;
+}
+a.link {
+    border-radius: 5px;
+    box-sizing: border-box;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    font-size: smaller;
+    margin: 2px;
+    padding: 5px;
+    position: relative;
+    width: 120px;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+.discord {
+    background: #7289da;
+    border-bottom: 2px solid #6175ba;
+    box-shadow: inset 0 -2px #6175ba;
+    -webkit-box-shadow: inset 0 -2px #6175ba;
+}
+.discord:active,
+.discord:hover {
+    top: 1px;
+    background: #6175ba;
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.revolt {
+    background: #fd6671;
+    border-bottom: 2px solid #ed4245;
+    box-shadow: inset 0 -2px #ed4245;
+    -webkit-box-shadow: inset 0 -2px #ed4245;
+}
+.revolt:active,
+.revolt:hover {
+    top: 1px;
+    background: #ed4245;
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.reddit {
+    background: #f75401;
+    border-bottom: 2px solid #d24a01;
+    box-shadow: inset 0 -2px #d24a01;
+    -webkit-box-shadow: inset 0 -2px #d24a01;
+}
+.reddit:active,
+.reddit:hover {
+    top: 1px;
+    background: #d24a01;
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.original {
+    background: #77bf79;
+    border-bottom: 2px solid #679c68;
+    box-shadow: inset 0 -2px #679c68;
+    -webkit-box-shadow: inset 0 -2px #679c68;
+}
+.original:active,
+.original:hover {
+    top: 1px;
+    background: #679c68;
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.developer {
+    background: #454b7f;
+    border-bottom: 2px solid #313454;
+    box-shadow: inset 0 -2px #313454;
+    -webkit-box-shadow: inset 0 -2px #313454;
+}
+.developer:active,
+.developer:hover {
+    top: 1px;
+    background: #313454;
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.youtube {
+    background: #f71701;
+    border-bottom: 2px solid #d21401;
+    box-shadow: inset 0 -2px #d21401;
+    -webkit-box-shadow: inset 0 -2px #d21401;
+}
+.youtube:active,
+.youtube:hover {
+    top: 1px;
+    background: #d21401;
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.codeberg {
+    background: #2C90DD;
+    border-bottom: 2px solid #247EC3;
+    -webkit-box-shadow: inset 0 -2px #247EC3;
+    box-shadow: inset 0 -2px #247EC3;
+}
+.codeberg:active,
+.codeberg:hover {
+    top: 1px;
+    background: #247EC3;
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.github {
+    background: #666666;
+    border-bottom: 2px solid #333333;
+    -webkit-box-shadow: inset 0 -2px #333333;
+    box-shadow: inset 0 -2px #333333;
+}
+.github:active,
+.github:hover {
+    top: 1px;
+    background: #333333;
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+.moreLinks {
+    text-align: center;
+}
+#startMenuWrapper {
+    transition: top 1s;
+    top: 0px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+}
+
+.nopadding {
+    padding: 0;
+    margin: 0;
+}
+
+#startMenu ul {
+    margin: 10px;
+    padding: 10px;
+    margin-top: 0;
+}
+
+#startMenu .input-error {
+    color: red;
+    opacity: 0;
+    font-size: 12px;
+}
+
+#gameAreaWrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#gameCanvas {
+    position: absolute;
+}
+
+#chatInput {
+    position: absolute;
+    z-index: 1;
+    width: 300px;
+    height: 30px;
+    top: 60%;
+    left: calc(50% - 149px);
+    box-shadow: 0px 0px 5px 2px darkgray;
+    border: 2px solid black;
+    border-radius: 10px;
+    color: black;
+    background-color: #ffffff88;
+}
+
+input [type="image"]:focus {
+    border: none;
+    outline: 1px solid transparent;
+    border-style: none;
+}
+td b {
+    display: inline-block;
+    cursor: pointer;
+    text-align: right;
+    vertical-align: bottom;
+}
+td b:hover {
+    color: #777;
+}
+td b {
+    display: inline-block;
+    width: 12px;
+    height: 17px;
+    cursor: pointer;
+    text-align: right;
+    vertical-align: bottom;
+}
+
+*:focus {
+    outline: 1px solid transparent;
+    border-style: none;
+}
+i {
+    transition: transform 500ms;
+}
+i.arrow {
+    border: solid #484848;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 3px;
+}
+i.reset {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border: #000000 2px solid;
+    border-right-color: transparent;
+    border-radius: 50%;
+    position: relative;
+    top: 3px;
+}
+i.reset::after {
+    content: '';
+    display: inline-block;
+    border: 3px solid;
+    border-color: transparent #000000 #000000 transparent;
+    position: relative;
+    left: 3px;
+    bottom: 8px;
+}
+i.cross {
+    display: inline-block;
+    width: 2px;
+    height: 2px;
+    margin: 0 5px -3px;
+    padding: 6px;
+}
+i.cross.x {
+    transform: rotate(135deg);
+}
+i.cross::before, i.cross::after {
+    content: '';
+    display: inline-block;
+    background-color: #000000;
+    border-radius: 2px;
+    float: left;
+}
+i.cross::before {
+    width: 12px;
+    height: 2px;
+    margin-left: -5px;
+}
+i.cross::after {
+    width: 2px;
+    height: 12px;
+    margin-top: -7px;
+}
+i.flag {
+    display: inline-block;
+    width: 2px;
+    height: 12px;
+    background: #000000;
+    margin: 0 15px 0 5px;
+}
+i.flag::before {
+    content: '';
+    display: inline-block;
+    width: 9px;
+    height: 7px;
+    background-color: #000000;
+    margin: 0 0 5px 3px;
+    transition: margin-bottom 500ms;
+}
+i.flag.down::before {
+    margin-bottom: 2px;
+}
+.resetControls {
+    opacity: 0;
+    transform: rotate(0deg);
+    transition: opacity 1000ms, margin 1000ms;
+    margin: 0 -6px;
+}
+.resetControls.spin {
+    transition: transform 500ms, opacity 1000ms 150ms, margin 1000ms 150ms;
+    transform: rotate(360deg);
+}
+.resetControls.active {
+    opacity: 1;
+    margin: 0 5px;
+    cursor: pointer;
+}
+body.mobile .controlTable {
+    display: none;
+}
+.moreControls {
+    cursor: pointer;
+}
+.controlTable {
+    border-collapse: collapse;
+    margin: 0 2px;
+}
+.controlTable tr {
+    border: 0;
+    transition: opacity 500ms;
+}
+.controlTable tr.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+.controlTable td {
+    transition: padding 500ms;
+}
+.controlTable div {
+    position: relative;
+    top: 0px;
+    height: 18px;
+    transition: height 500ms, top 500ms;
+}
+.controlTable tr.hidden td {
+    padding: 0 1px;
+}
+.controlTable tr.hidden div {
+    top: -20px;
+    height: 0;
+}
+.controlTable td b {
+    display: inline-block;
+    width: 12px;
+    height: 16px;
+    cursor: pointer;
+    text-align: right;
+    vertical-align: bottom;
+}
+.controlTable td b:hover {
+    color: #777;
+}
+.controlTable td.editing b {
+    background: #fff;
+    color: #333;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    padding: 1px 4px;
+    margin: -2px -7px -2px -3px;
+    text-align: center;
+    cursor: text;
+    -webkit-user-select: auto;
+    -moz-user-select: auto;
+    -ms-user-select: auto;
+    user-select: auto;
+}
+.controlTable td.editing span {
+    visibility: hidden;
+}
